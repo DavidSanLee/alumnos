@@ -5,6 +5,7 @@ class Estudiante{
         materias = [],
         materiasCalificadas = [],
         calificar2 = [],
+        mediaAritmetica = 0
     }
 
     ) {
@@ -13,6 +14,9 @@ class Estudiante{
         this.materias = materias;
         this.materiasCalificadas = materiasCalificadas;
         this.calificar2 = calificar2;
+        this.mediaAritmetica = mediaAritmetica;
+
+
 
     }
 
@@ -56,24 +60,46 @@ class Estudiante{
         }
     }
 
-    promedio(media) {
+    promedio() {
         //Object.values()
         //Object.entries()
         //materiasCalificadas = [{},{},{}]
-        let cont = this.materiasCalificadas.length
-        let cont2 = 0
-        while( cont >= 0 ) {
-            this.materiasCalificadas[0][0]
-            cont --
-            //materialCalificado[0] -> tome el valor [1]
+        //let c = media + this.mediaAritmetica
+        //console.log(c)
+        //this.mediaAritmetica = c + 2
+        let promedioFinal = []
+        for(let index = 0; index < this.materias.length; index++){
+
+            // array como objeto
+            //var obj = { 0: 'a', 1: 'b', 2: 'c' };
+            //console.log(Object.values(this.calificar2[index])); // ['a', 'b', 'c']
+
+            promedioFinal.push(Object.values(this.calificar2[index])) 
+            //console.log(promedioFinal)
+
         }
+        //const listaReducidaFinal4 = listitaFiltrada4.reduce((obj,item) => {
+            
+        //} , 0);
+        const  promedioFinal2 =  promedioFinal.flat()
+        //console.log(promedioFinal2)
+        const listaReducidaFinal = promedioFinal2.reduce((obj,item) => 
+        obj = ((obj * 1) + (item * 1)) 
+        //  / (this.calificar2.length)
+        ,0);
+        const promedioF = listaReducidaFinal / this.calificar2.length
+        console.log(promedioF)
+        this.mediaAritmetica = promedioF
+
+        
+        
     }
 }
 
 const david = new Estudiante({
     nombreAlumno: "David Sanchez",
     grupoAlumno: "2A",
-    materias: ['historia'] 
+    materias: ['historia','español','matematicas','geografia','ingles'] 
 })
 
 const juan = new Estudiante({
